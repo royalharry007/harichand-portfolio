@@ -28,8 +28,37 @@ const skills = [
 ]
 
 const projects = [
+ 
   {
     number: '01',
+    name: 'DomainX – Domain & DNS Management System',
+    type: 'DOMAIN INTELLIGENCE · DNS ANALYSIS',
+    description: 'A web-based domain analysis tool that retrieves DNS records, checks email-security configurations and generates downloadable diagnostic reports.',
+    points: [
+      'Retrieves A, AAAA, MX, NS, CNAME and TXT DNS records.',
+      'Checks SPF and DMARC information from DNS TXT records.',
+      'Displays DNS analysis results and lookup errors in a dashboard.',
+      'Generates downloadable PDF diagnostic reports using jsPDF.'
+    ],
+    stack: [
+      'JavaScript',
+      'Node.js',
+      'Express.js',
+      'DNS',
+      'SPF',
+      'DMARC',
+      'jsPDF',
+      'Vercel'
+    ],
+    link: 'https://github.com/royalharry007/DomainX-DNS-Analyzer',
+    liveLink: 'https://domain-x-dns-analyzer.vercel.app/',
+    icon: Globe2,
+    featured: true,
+  },
+
+
+  {
+    number: '02',
     name: 'Real-Time GNSS Anomaly Detection',
     type: 'GEOSPATIAL DATA · STREAM PROCESSING',
     description: 'A pipeline for processing GNSS NMEA data streams and detecting signal drops, position drift, and satellite loss, with a dashboard for monitoring results.',
@@ -44,7 +73,7 @@ const projects = [
     featured: true,
   },
   {
-    number: '02',
+    number: '03',
     name: 'IntellMeet',
     type: 'FULL-STACK · REAL-TIME COMMUNICATION',
     description: 'A full-stack video-conferencing platform with meeting creation, participant management, real-time chat, and peer-to-peer audio/video.',
@@ -171,15 +200,95 @@ function App() {
           <div className="skills-grid">{skills.map((group, i) => <Reveal key={group.title} delay={i * 0.07} className="skill-card"><div className="skill-card-head"><span className="skill-icon"><group.icon size={19}/></span><span className="mono-index">0{i + 1}</span></div><h3>{group.title}</h3><div className="skill-tags">{group.items.map(item => <span key={item}>{item}</span>)}</div></Reveal>)}</div>
         </section>
 
-        <section id="projects" className="section-wrap section-block">
-          <SectionHeading eyebrow="03 / SELECTED WORK" title="Things I've" accent="built."/>
-          <p className="section-intro">A selection of projects where I’ve explored real-time systems, application development, and data processing.</p>
-          <div className="projects-list">{projects.map((project, i) => <Reveal key={project.number} delay={i * 0.08} className={`project-card ${project.featured ? 'featured-project' : ''}`}>
-            <div className="project-visual"><div className="project-visual-grid"/><div className="project-symbol"><project.icon size={48} strokeWidth={1.2}/></div><span className="project-number">{project.number}</span><span className="project-visual-label">{project.featured ? 'GEOSPATIAL SYSTEMS' : 'REAL-TIME APPLICATION'}</span></div>
-            <div className="project-content"><div className="eyebrow">{project.type}</div><h3>{project.name}</h3><p>{project.description}</p><ul>{project.points.map(point => <li key={point}><ChevronRight size={15}/>{point}</li>)}</ul><div className="project-stack">{project.stack.map(tag => <span key={tag}>{tag}</span>)}</div><a className="text-link" href={project.link} target="_blank" rel="noreferrer">View on GitHub <ArrowUpRight size={16}/></a></div>
-          </Reveal>)}</div>
-          <div className="github-more"><span>Want to see more?</span><a href={profile.github} target="_blank" rel="noreferrer">Explore all repositories <ArrowUpRight size={15}/></a></div>
-        </section>
+       
+<section id="projects" className="section-wrap section-block">
+  <SectionHeading
+    eyebrow="03 / SELECTED WORK"
+    title="Things I've"
+    accent="built."
+  />
+
+  <p className="section-intro">
+    A selection of projects where I've explored domain intelligence,
+    real-time systems, application development, and data processing.
+  </p>
+
+  <div className="projects-list">
+    {projects.map((project, i) => (
+      <Reveal
+        key={project.name}
+        delay={i * 0.08}
+        className={`project-card ${project.featured ? 'featured-project' : ''}`}
+      >
+        <div className="project-visual">
+          <div className="project-visual-grid" />
+          <div className="project-symbol">
+            <project.icon size={48} strokeWidth={1.2} />
+          </div>
+          <span className="project-number">{project.number}</span>
+          <span className="project-visual-label">{project.type}</span>
+        </div>
+
+        <div className="project-content">
+          <div className="eyebrow">{project.type}</div>
+
+          <h3>{project.name}</h3>
+
+          <p>{project.description}</p>
+
+          <ul>
+            {project.points.map(point => (
+              <li key={point}>
+                <ChevronRight size={15} />
+                {point}
+              </li>
+            ))}
+          </ul>
+
+          <div className="project-stack">
+            {project.stack.map(tag => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+
+          <div className="project-links">
+            <a
+              className="text-link"
+              href={project.link}
+              target="_blank"
+              rel="noreferrer"
+            >
+              View on GitHub <ArrowUpRight size={16} />
+            </a>
+
+            {project.liveLink && (
+              <a
+                className="text-link"
+                href={project.liveLink}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Live Demo <ExternalLink size={15} />
+              </a>
+            )}
+          </div>
+        </div>
+      </Reveal>
+    ))}
+  </div>
+
+  <div className="github-more">
+    <span>Want to see more?</span>
+    <a
+      href={profile.github}
+      target="_blank"
+      rel="noreferrer"
+    >
+      Explore all repositories <ArrowUpRight size={15} />
+    </a>
+  </div>
+</section>
+
 
         <section id="experience" className="section-wrap section-block">
           <SectionHeading eyebrow="04 / WHERE I'VE GROWN" title="Experience &" accent="education."/>
